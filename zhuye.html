@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>周博宇的个人网站</title>
+    <style type="text/css">
+        body{
+            background: black;
+            width: 100%;
+            height: 100%;
+        }
+        .container{
+            width: 50%;
+            height: 20%;
+            position: absolute;
+            top:40% ;
+            left:25%;
+            background: gray;
+            opacity: .5;
+            filter:alpha(opacity:.5);
+            border-radius:20px ;
+            text-align: center;
+        }
+        .title{
+            line-height: 1;
+        }
+        .music{
+            position: fixed;
+            top: 100px;
+            right: 100px;
+            width: 133px;
+            height: 95px;
+            background: url("img/body.PNG")no-repeat;
+            background-size: cover;
+        }
+        .leg{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 75px;
+            height: 78px;
+            background: url("img/leg.png")no-repeat;
+            background-size: cover;
+            transform: rotate(-21deg);
+            transform-origin: 54px 22px;
+            z-index: 3;
+        }
+        .lightDesk{
+            position: absolute;
+            top: 7px;
+            left: -22px;
+            width: 105px;
+            height: 105px;
+            background: url("img/lightDesk.png")no-repeat;
+            background-size: cover;
+            /*-webkit-animation: circle 1s infinite linear;*/
+        }
+        @-webkit-keyframes circle {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="title">
+          <h1>周博宇的个人网站</h1>
+        <p>Alex Chou's Personal Website</p>
+    </div>
+    <div>
+        <h3>正在装修，敬请期待！</h3>
+    </div>
+    <div class="music">
+        <div class="leg"></div>
+        <div class="lightDesk"></div>
+    </div>
+    <audio id="music" src="audio/actor.mp3" ></audio>
+</div>
+</body>
+<script type="text/javascript">
+    var audio = document.getElementById("music");
+    audio.addEventListener("canplaythrough",
+            function() {
+
+            },
+            false);
+    var musicStart=document.getElementsByClassName("leg")[0];
+    var lightDesk=document.getElementsByClassName("lightDesk")[0];
+    var flag=true;
+    musicStart.onclick=function(){
+        if(flag==true){
+            musicStart.style.transform="rotate(0deg)";
+            flag=false;
+            lightDesk.style.animation=" circle 1s infinite linear";
+            audio.play();
+        }else{
+            musicStart.style.transform="rotate(-21deg)";
+            flag=true;
+            lightDesk.style.animation="";
+            audio.pause();
+        }
+    };
+</script>
+</html>
